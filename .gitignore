@@ -1,0 +1,84 @@
+# Compiled output
+*.js
+!jest.config.js
+*.d.ts
+dist/
+build/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# CDK
+.cdk.staging/
+cdk.out/
+cdk.context.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/*
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# AWS
+.aws-sam/
+samconfig.toml
+
+# OS
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Lambda deployment packages
+*.zip
+
+# Debug
+.vscode-test/
+.breakpoints
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Documentation (optional - remove if you want to commit generated docs)
+# docs/.vitepress/dist
+# docs/.vitepress/cache
+
+# Sensitive data backups
+*.backup
+*.bak
+*.old

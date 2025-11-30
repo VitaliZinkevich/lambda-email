@@ -24,6 +24,9 @@ export const handler = async (
         statusCode: 400,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+          'Access-Control-Allow-Methods': 'OPTIONS,POST',
         },
         body: JSON.stringify({
           message: 'Email address is required',
@@ -68,8 +71,12 @@ export const handler = async (
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST',
       },
       body: JSON.stringify({
+        code: 200,
         message: 'Email sent successfully',
         messageId: response.MessageId,
         recipient: body.email,
@@ -81,6 +88,9 @@ export const handler = async (
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST',
       },
       body: JSON.stringify({
         message: 'Failed to send email',

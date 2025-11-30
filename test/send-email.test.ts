@@ -44,6 +44,7 @@ describe('Lambda Email Handler', () => {
     const result = await handler(event);
 
     expect(result.statusCode).toBe(200);
+    expect(result.headers && result.headers['Access-Control-Allow-Origin']).toBe('*');
     const responseBody = JSON.parse(result.body);
     expect(responseBody.message).toBe('Email sent successfully');
     expect(responseBody.messageId).toBe('mock-message-id-12345');
@@ -70,6 +71,7 @@ describe('Lambda Email Handler', () => {
     const result = await handler(event);
 
     expect(result.statusCode).toBe(400);
+    expect(result.headers && result.headers['Access-Control-Allow-Origin']).toBe('*');
     const responseBody = JSON.parse(result.body);
     expect(responseBody.message).toBe('Email address is required');
   });
@@ -80,6 +82,7 @@ describe('Lambda Email Handler', () => {
     const result = await handler(event);
 
     expect(result.statusCode).toBe(400);
+    expect(result.headers && result.headers['Access-Control-Allow-Origin']).toBe('*');
   });
 
   it('should handle invalid JSON gracefully', async () => {
@@ -101,5 +104,6 @@ describe('Lambda Email Handler', () => {
     const result = await handler(event);
 
     expect(result.statusCode).toBe(400);
+    expect(result.headers && result.headers['Access-Control-Allow-Origin']).toBe('*');
   });
 });

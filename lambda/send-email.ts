@@ -36,9 +36,21 @@ export const handler = async (
     }
 
     // Email parameters
-    const sourceEmail = process.env.SOURCE_EMAIL || 'noreply@example.com';
+    const sourceEmail = process.env.SOURCE_EMAIL || 'vitalizinkevich@gmail.com';
     const subject = body.subject || 'Test Email from Lambda';
-    const bodyText = body.body || `This is a test email ${body.email} sent from AWS Lambda using SES.`;
+    
+    // Handle circular references in JSON.stringify
+    const seen = new WeakSet();
+    const bodyText = body.body || `Automated notification from Smart IT Services:\n\n
+      ${JSON.stringify(body, (key, value) => {
+        if (typeof value === 'object' && value !== null) {
+          if (seen.has(value)) {
+            return '[Circular]';
+          }
+          seen.add(value);
+        }
+        return value;
+      }, 2)}`;
 
     // Send email using SES
     const command = new SendEmailCommand({
